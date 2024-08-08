@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.gamecenter.MainActivity;
@@ -29,8 +30,8 @@ public class SplashDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_splash_window, container, false);
 
         // 找到按钮视图
-        TextView agreeButton = view.findViewById(R.id.agree_button);
-        TextView disagreeButton = view.findViewById(R.id.disagree_button);
+        FrameLayout agreeButton = view.findViewById(R.id.agree_button);
+        FrameLayout disagreeButton = view.findViewById(R.id.disagree_button);
 
         // 设置同意按钮的点击事件
         agreeButton.setOnClickListener(v -> {
@@ -52,17 +53,18 @@ public class SplashDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-
+        dialog.setContentView(R.layout.fragment_splash_window);
         // 获取对话框的窗口
         Window window = dialog.getWindow();
         if (window != null) {
+            // 设置圆角
+            window.setBackgroundDrawableResource(R.drawable.splash_rounded_corners);
             // 设置对话框的宽度和高度
             window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
             // 设置对话框居中
             window.setGravity(Gravity.CENTER);
-        }
 
+        }
         return dialog;
     }
 

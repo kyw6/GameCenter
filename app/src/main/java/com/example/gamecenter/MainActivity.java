@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         DpUtils dpUtils = new DpUtils(this);
-        Toast.makeText(this,dpUtils.pxToDp(126) + "dp" + " " + dpUtils.pxToDp(56) + "dp",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,dpUtils.pxToDp(160) + "dp" + " " + dpUtils.pxToDp(42) + "dp",Toast.LENGTH_SHORT).show();
 
     }
 }
