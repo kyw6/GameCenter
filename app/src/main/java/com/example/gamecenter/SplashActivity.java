@@ -1,7 +1,8 @@
 package com.example.gamecenter;
 
+import static com.example.gamecenter.utils.PreferenceKeys.KEY_PRIVACY_ACCEPTED;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,12 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.gamecenter.fragment.SplashDialogFragment;
+import com.example.gamecenter.utils.PreferencesUtil;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_DISPLAY_LENGTH = 2000; // 闪屏显示时间，单位是毫秒
-    private static final String PREFS_NAME = "MyPrefs";
-    private static final String KEY_PRIVACY_ACCEPTED = "privacyAccepted";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,8 @@ public class SplashActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_splash);
 
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        boolean privacyAccepted = prefs.getBoolean(KEY_PRIVACY_ACCEPTED, false);
+        PreferencesUtil.init(this);
+        boolean privacyAccepted = PreferencesUtil.getBoolean(KEY_PRIVACY_ACCEPTED, false);
         new Handler().postDelayed(() -> {
             if (privacyAccepted) {
                 // 用户已经同意隐私政策，直接进入主页面

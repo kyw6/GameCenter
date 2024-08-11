@@ -1,5 +1,7 @@
 package com.example.gamecenter.fragment;
 
+import static com.example.gamecenter.utils.PreferenceKeys.KEY_PRIVACY_ACCEPTED;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -27,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.gamecenter.MainActivity;
 import com.example.gamecenter.R;
+import com.example.gamecenter.utils.PreferencesUtil;
 
 public class SplashDialogFragment extends DialogFragment {
 
@@ -41,7 +44,11 @@ public class SplashDialogFragment extends DialogFragment {
 
         // 设置同意按钮的点击事件
         agreeButton.setOnClickListener(v -> {
+            // 跳转到主界面
             startMainActivity();
+            // 保存到SharedPreferences中
+            PreferencesUtil.init(getActivity());
+            PreferencesUtil.setBoolean(KEY_PRIVACY_ACCEPTED, true);
         });
 
         // 设置不同意按钮的点击事件
