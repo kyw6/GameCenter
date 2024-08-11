@@ -2,5 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+<!--    闪屏页面颜色-->
     <color name="splash_yellow">#FFCD4F</color>
+<!--    导航栏颜色-->
+    <color name="nav_bar_color_selected">#FFCD4F</color>
+    <color name="nav_bar_color_unselected">#40000000</color>
+    <color name="bottom_nav_background">#FFFFFF</color>
+
 </resources>
