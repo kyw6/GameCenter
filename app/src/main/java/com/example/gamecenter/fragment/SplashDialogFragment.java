@@ -101,7 +101,7 @@ public class SplashDialogFragment extends DialogFragment {
             @Override
             public void onClick(@NonNull View widget) {
                 // 处理用户协议的点击事件
-                Toast.makeText(getContext(), "跳转到 用户协议 网站", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "查看用户协议", Toast.LENGTH_SHORT).show();
                 // 创建Intent跳转到指定网址
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.baidu.com"));
                 startActivity(browserIntent);
@@ -128,7 +128,7 @@ public class SplashDialogFragment extends DialogFragment {
             @Override
             public void onClick(@NonNull View widget) {
                 // 处理隐私协议的点击事件
-                Toast.makeText(getContext(), "跳转到 隐私协议 网站", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "查看隐私协议", Toast.LENGTH_SHORT).show();
                 // 创建Intent跳转到指定网址
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.baidu.com"));
                 startActivity(browserIntent);
