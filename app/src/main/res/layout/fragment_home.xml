@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/edit_text_search"
+        android:id="@+id/edit_text_home_search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="19dp"
@@ -16,11 +16,13 @@
         android:layout_marginEnd="19dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_edittext_background"
-        android:drawableEnd="@drawable/ic_search"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_search_home_page"
+        android:focusable="false"
         android:hint="疯狂跳一跳2"
         android:paddingStart="20dp"
-
-        android:paddingEnd="14dp" />
+        android:paddingEnd="14dp"
+        android:textSize="16sp" />
 
     <View
         android:layout_width="match_parent"
