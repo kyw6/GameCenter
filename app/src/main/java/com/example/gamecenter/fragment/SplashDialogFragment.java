@@ -67,6 +67,8 @@ public class SplashDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.setContentView(R.layout.fragment_splash_window);
+        // 禁用点击外部区域自动关闭对话框
+        dialog.setCanceledOnTouchOutside(false);
         // 获取对话框的窗口
         Window window = dialog.getWindow();
         if (window != null) {

@@ -2,14 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<!--    闪屏页面颜色-->
+    <!--    闪屏页面颜色-->
     <color name="splash_yellow">#FFCD4F</color>
-<!--    导航栏颜色-->
+    <!--    导航栏颜色-->
     <color name="nav_bar_color_selected">#FFCD4F</color>
     <color name="nav_bar_color_unselected">#40000000</color>
     <color name="bottom_nav_background">#FFFFFF</color>
-<!--    分割线-->
+    <!--    分割线-->
     <color name="divider_color">#10000000</color>
-    <color name="search_bar_background">#10000000</color>
+    <!--    搜索框内部填充颜色-->
+    <color name="search_bar_fill">#10000000</color>
+    <!--    搜索框边框-->
+    <color name="search_bar_border">#08000000</color>
 
 </resources>
