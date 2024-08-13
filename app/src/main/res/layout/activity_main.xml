@@ -20,7 +20,7 @@
         app:menu="@menu/bottom_navigation_menu"
         android:layout_alignParentBottom="true"
         app:itemBackground="@drawable/selector_bottom_navigation"
-        android:background="@color/bottom_nav_background"
+        android:background="@color/color_bottom_nav_background"
         app:itemIconTint="@color/bottom_nav_item_color"
         app:itemTextColor="@color/bottom_nav_item_color"
          />

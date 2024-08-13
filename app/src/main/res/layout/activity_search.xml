@@ -44,9 +44,10 @@
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:text="搜索"
-        android:textColor="@color/splash_yellow"
+        android:textColor="@color/color_text_view_search"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_text_search"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

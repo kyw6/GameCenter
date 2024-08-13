@@ -113,7 +113,7 @@ public class SplashDialogFragment extends DialogFragment {
             public void updateDrawState(@NonNull TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setUnderlineText(false); // 去掉下划线
-                ds.setColor(getResources().getColor(R.color.splash_yellow));
+                ds.setColor(getResources().getColor(R.color.color_splash_yellow));
             }
         };
         //应用点击事件、颜色、去掉下划线
@@ -140,7 +140,7 @@ public class SplashDialogFragment extends DialogFragment {
             public void updateDrawState(@NonNull TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setUnderlineText(false); // 去掉下划线
-                ds.setColor(getResources().getColor(R.color.splash_yellow));
+                ds.setColor(getResources().getColor(R.color.color_splash_yellow));
             }
         };
         //应用点击事件、颜色、去掉下划线
