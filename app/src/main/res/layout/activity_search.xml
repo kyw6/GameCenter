@@ -8,12 +8,11 @@
     tools:context=".SearchActivity">
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:id="@+id/button_return_search"
+        android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@color/white"
         android:src="@drawable/ic_return"
-
-
         app:layout_constraintBottom_toBottomOf="@+id/edit_text_search"
         app:layout_constraintEnd_toStartOf="@+id/edit_text_search"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +20,7 @@
 
     <EditText
         android:id="@+id/edit_text_search"
-        android:layout_width="270dp"
+        android:layout_width="273dp"
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
@@ -33,6 +32,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="14dp"
         android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/button_return_search"
         app:layout_constraintEnd_toStartOf="@+id/text_view_search"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,12 +40,12 @@
         android:id="@+id/text_view_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:text="搜索"
         android:textColor="@color/splash_yellow"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_text_search"
         app:layout_constraintEnd_toEndOf="parent" />
 
