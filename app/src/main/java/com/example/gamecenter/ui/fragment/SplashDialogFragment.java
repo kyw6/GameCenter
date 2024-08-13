@@ -1,4 +1,4 @@
-package com.example.gamecenter.fragment;
+package com.example.gamecenter.ui.fragment;
 
 import static com.example.gamecenter.utils.PreferenceKeys.KEY_PRIVACY_ACCEPTED;
 
@@ -27,7 +27,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gamecenter.MainActivity;
+import com.example.gamecenter.ui.MainActivity;
 import com.example.gamecenter.R;
 import com.example.gamecenter.utils.PreferencesUtil;
 

@@ -1,4 +1,4 @@
-package com.example.gamecenter.fragment;
+package com.example.gamecenter.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

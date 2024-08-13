@@ -1,4 +1,4 @@
-package com.example.gamecenter.fragment;
+package com.example.gamecenter.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.gamecenter.R;
-import com.example.gamecenter.SearchActivity;
+import com.example.gamecenter.ui.SearchActivity;
 
 public class HomeFragment extends Fragment {
 

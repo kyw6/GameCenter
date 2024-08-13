@@ -1,4 +1,4 @@
-package com.example.gamecenter;
+package com.example.gamecenter.ui;
 
 
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.gamecenter.fragment.HomeFragment;
-import com.example.gamecenter.fragment.MyPageFragment;
+import com.example.gamecenter.R;
+import com.example.gamecenter.ui.fragment.HomeFragment;
+import com.example.gamecenter.ui.fragment.MyPageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

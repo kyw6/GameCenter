@@ -1,10 +1,9 @@
-package com.example.gamecenter;
+package com.example.gamecenter.ui;
 
 import static com.example.gamecenter.utils.PreferenceKeys.KEY_PRIVACY_ACCEPTED;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,7 +13,8 @@ import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.gamecenter.fragment.SplashDialogFragment;
+import com.example.gamecenter.R;
+import com.example.gamecenter.ui.fragment.SplashDialogFragment;
 import com.example.gamecenter.utils.PreferencesUtil;
 
 public class SplashActivity extends AppCompatActivity {
