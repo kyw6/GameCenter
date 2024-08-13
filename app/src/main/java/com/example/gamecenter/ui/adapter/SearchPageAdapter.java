@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.responses.SearchGameResponse;
 
@@ -36,6 +37,7 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Ga
         holder.gameName.setText(game.getGameName());
         Glide.with(holder.itemView.getContext())
                 .load(game.getIcon())
+                .transform(new RoundedCorners(32))//圆角设置
                 .into(holder.gameIcon);
     }
 

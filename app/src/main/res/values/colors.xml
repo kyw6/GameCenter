@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#40000000</color>
 
 
     <!--    闪屏页面颜色-->
@@ -22,4 +23,5 @@
     <!--    搜索页面-->
     <!--    搜索按钮文字-->
     <color name="color_text_view_search">#FFBF41</color>
+    <color name="color_search_button">#FFCD4F</color>
 </resources>

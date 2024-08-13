@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if (selectedFragment != null) {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, selectedFragment)
+                        .replace(R.id.fragment_home_container, selectedFragment)
                         .commit();
             }
             return true;

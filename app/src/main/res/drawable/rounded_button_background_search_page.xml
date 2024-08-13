@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/color_search_button" /> <!-- 按钮的背景颜色 -->
+    <corners android:radius="63px" /> <!-- 圆角半径 -->
+
+</shape>
