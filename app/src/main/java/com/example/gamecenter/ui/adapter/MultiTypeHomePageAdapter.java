@@ -1,9 +1,12 @@
 package com.example.gamecenter.ui.adapter;
 
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.responses.GameCenterResponse;
-import com.example.gamecenter.network.responses.SearchGameResponse;
 
 import java.util.List;
 
@@ -78,7 +80,7 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
                     ((ViewHolderThreeNum) holder).gameName.setText(game.getGameName());
                     Glide.with(holder.itemView.getContext())
                             .load(game.getIcon())
-                            .transform(new RoundedCorners(32))//圆角设置
+                            .transform(new RoundedCorners(60))//圆角设置
                             .into(((ViewHolderThreeNum) holder).gameIcon);
 
                 }
@@ -86,15 +88,55 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
             case TYPE_LAYOUT_FOUR_NUM:
                 if (holder instanceof ViewHolderFourNum) {
                     ((ViewHolderFourNum) holder).gameName.setText(game.getGameName());
+                    // 获取 tags 并分割
+                    String tags = game.getTags();
+                    String tag = tags.split(",")[0].trim();  // 只获取第一个标签并去除可能的空格
+                    Log.d("kyw", "tag: " + tag);
+                    // 创建并配置 TextView 标签
+                    TextView tagView = new TextView(holder.itemView.getContext());
+                    tagView.setText(tag);
+                    tagView.setWidth(60);
+                    tagView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 28);
+
+                    // 创建 LayoutParams 并设置 margin
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    tagView.setLayoutParams(layoutParams);
+
+                    // 将标签添加到容器中
+                    ((ViewHolderFourNum) holder).gameLabelContainer.addView(tagView);
+
+
                     Glide.with(holder.itemView.getContext())
                             .load(game.getIcon())
-                            .transform(new RoundedCorners(32))//圆角设置
+                            .transform(new RoundedCorners(42))//圆角设置
                             .into(((ViewHolderFourNum) holder).gameIcon);
                 }
                 break;
             case TYPE_LAYOUT_ONE_NUM:
                 if (holder instanceof ViewHolderOneNum) {
                     ((ViewHolderOneNum) holder).gameName.setText(game.getGameName());
+                    ((ViewHolderOneNum) holder).brief.setText(game.getBrief());
+                    ((ViewHolderOneNum) holder).gameLabelContainer.removeAllViews();
+                    // 分割 tags
+                    String tags = game.getTags();
+                    String[] tagArray = tags.split(",");
+                    // 创建并添加 TextView 标签
+                    for (String tag : tagArray) {
+                        TextView tagView = new TextView(holder.itemView.getContext());
+                        tagView.setText(tag.trim()); // 去除可能的空格
+                        tagView.setWidth(80);
+                        tagView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 36);
+                        // 创建 LayoutParams 并设置 margin
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        tagView.setLayoutParams(layoutParams);
+                        ((ViewHolderOneNum) holder).gameLabelContainer.addView(tagView);
+                    }
                     Glide.with(holder.itemView.getContext())
                             .load(game.getIcon())
                             .transform(new RoundedCorners(32))//圆角设置
@@ -138,11 +180,13 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
     static class ViewHolderFourNum extends RecyclerView.ViewHolder {
         ImageView gameIcon;
         TextView gameName;
+        LinearLayout gameLabelContainer;
 
         public ViewHolderFourNum(View itemView) {
             super(itemView);
             gameIcon = itemView.findViewById(R.id.imageView_item_four_num);
             gameName = itemView.findViewById(R.id.textView_item_four_num);
+            gameLabelContainer = itemView.findViewById(R.id.game_label_container);
         }
 
 
@@ -151,11 +195,16 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
     static class ViewHolderOneNum extends RecyclerView.ViewHolder {
         ImageView gameIcon;
         TextView gameName;
+        TextView brief;
+        LinearLayout gameLabelContainer;
 
         public ViewHolderOneNum(View itemView) {
             super(itemView);
             gameIcon = itemView.findViewById(R.id.imageView_item_one_num);
             gameName = itemView.findViewById(R.id.textView_item_one_num);
+            brief = itemView.findViewById(R.id.game_describe);
+            gameLabelContainer = itemView.findViewById(R.id.game_label_container);
+
         }
 
     }

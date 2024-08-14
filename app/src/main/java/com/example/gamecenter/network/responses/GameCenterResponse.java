@@ -87,6 +87,7 @@ public class GameCenterResponse {
 
     public static class GameInfo {
         private int id;
+        private int style;
         private String gameName;
         private String packageName;
         private String appId;
@@ -103,6 +104,14 @@ public class GameCenterResponse {
         // Getter 和 Setter 方法
         public int getId() {
             return id;
+        }
+
+        public int getStyle() {
+            return style;
+        }
+
+        public void setStyle(int style) {
+            this.style = style;
         }
 
         public void setId(int id) {
