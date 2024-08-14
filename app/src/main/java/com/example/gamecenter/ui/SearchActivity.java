@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,7 @@ public class SearchActivity extends AppCompatActivity {
         EditText editTextSearch = findViewById(R.id.edit_text_search);
         FrameLayout fragmentContainer = findViewById(R.id.fragment_search_container);
         TextView searchTextView = findViewById(R.id.text_view_search);
+        ImageButton button_return_search = findViewById(R.id.button_return_search);
 
         // 初始化并显示默认 Fragment
         if (savedInstanceState == null) {
@@ -56,6 +58,13 @@ public class SearchActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_search_container, searchResultFragment)
                         .commit();
+            }
+        });
+
+        button_return_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
