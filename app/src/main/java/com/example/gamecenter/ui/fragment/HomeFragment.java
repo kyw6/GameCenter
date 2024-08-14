@@ -21,6 +21,7 @@ import com.example.gamecenter.network.RetrofitClient;
 import com.example.gamecenter.network.responses.GameCenterResponse;
 import com.example.gamecenter.ui.SearchActivity;
 import com.example.gamecenter.ui.adapter.HomePageAdapter;
+import com.example.gamecenter.ui.adapter.MultiTypeHomePageAdapter;
 
 import java.util.List;
 
@@ -31,7 +32,8 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private HomePageAdapter adapter;
+    private MultiTypeHomePageAdapter adapter;
+//    private HomePageAdapter adapter;
 
     @Nullable
     @Override
@@ -77,8 +79,11 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()) {
                     GameCenterResponse gameCenterResponse = response.body();
                     if (gameCenterResponse != null) {
+                        int style = gameCenterResponse.getData().getRecords().get(0).getStyle();
                         List<GameCenterResponse.GameInfo> gameInfoList = gameCenterResponse.getData().getRecords().get(0).getGameInfoList();
-                        adapter = new HomePageAdapter(gameInfoList);
+//                        adapter = new HomePageAdapter(gameInfoList);
+//                        recyclerView.setAdapter(adapter);
+                        adapter = new MultiTypeHomePageAdapter(gameInfoList);
                         recyclerView.setAdapter(adapter);
                     }
                 } else {
