@@ -47,7 +47,7 @@ public class SearchResultFragment extends Fragment {
 
     private void fetchGameData(String search) {
         int current = 1;
-        int size = 3;
+        int size = 7;
         Log.d("kyw", "发起请求 ");
         SearchPageApiService searchPageApiService = RetrofitClient.getClient().create(SearchPageApiService.class);
         Call<SearchGameResponse> call = searchPageApiService.searchGameCenterData(search, current, size);

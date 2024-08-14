@@ -19,7 +19,7 @@
         android:clickable="true"
         android:drawableEnd="@drawable/ic_search_home_page"
         android:focusable="false"
-        android:hint="疯狂跳一跳2"
+        android:hint="疯狂派对"
         android:paddingStart="20dp"
         android:paddingEnd="14dp"
         android:textSize="16sp" />

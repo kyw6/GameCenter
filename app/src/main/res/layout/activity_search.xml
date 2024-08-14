@@ -28,7 +28,7 @@
         android:drawableStart="@drawable/ic_search_search_page"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:hint="疯狂跳一跳2"
+        android:hint="疯狂派对"
         android:paddingStart="20dp"
         android:paddingEnd="14dp"
         android:textSize="16sp"

@@ -31,35 +31,32 @@
         android:layout_marginStart="15dp"
         android:text="游戏描述"
         android:textSize="28px"
-        app:layout_constraintBottom_toTopOf="@+id/game_label"
+        app:layout_constraintBottom_toTopOf="@+id/game_label_container"
         app:layout_constraintStart_toEndOf="@+id/game_icon"
         app:layout_constraintTop_toBottomOf="@+id/game_name" />
 
-    <TextView
-        android:id="@+id/game_label"
+    <LinearLayout
+        android:id="@+id/game_label_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:padding="3dp"
-        android:background="@drawable/rectangle_background_search_page"
-        android:text="游戏标签"
-        android:textSize="24px"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/game_icon"
         app:layout_constraintTop_toBottomOf="@+id/game_describe" />
 
     <Button
+        android:id="@+id/download_button"
         android:layout_width="140px"
         android:layout_height="75px"
-        android:id="@+id/download_button"
         android:layout_marginEnd="15dp"
-        android:text="秒玩"
-        android:textSize="34px"
-        android:textColor="@color/black"
         android:background="@drawable/rounded_button_background_search_page"
+        android:text="秒玩"
+        android:textColor="@color/black"
+        android:textSize="34px"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
 
         />
 

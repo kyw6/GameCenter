@@ -40,6 +40,9 @@ public class SearchActivity extends AppCompatActivity {
                 // 获取用户输入
                 String userInput = editTextSearch.getText().toString();
                 // 输出用户输入到日志
+                if (userInput.isEmpty()) {
+                    userInput = editTextSearch.getHint().toString();
+                }
                 Log.d("SearchActivity", "User Input: " + userInput);
                 // 创建新的 Fragment 实例
                 SearchResultFragment searchResultFragment = new SearchResultFragment();
