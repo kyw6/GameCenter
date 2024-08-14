@@ -2,19 +2,73 @@ package com.example.gamecenter.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.gamecenter.R;
+import com.example.gamecenter.ui.adapter.TagAdapter;
+import com.example.gamecenter.network.models.Tag;
+import com.example.gamecenter.utils.SearchHistoryManager;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class SearchFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private TagAdapter tagAdapter;
+    private List<Tag> tags = new ArrayList<>();
+    private SearchHistoryManager searchHistoryManager;
+    private EditText searchEditText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_search, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = view.findViewById(R.id.recyclerView_fragment_search_tab);
+        searchEditText = getActivity().findViewById(R.id.edit_text_search);
+        searchHistoryManager = new SearchHistoryManager(getContext());
+        tagAdapter = new TagAdapter(tags, tag -> {
+            searchEditText.setText(tag);
+            searchEditText.setSelection(tag.length());
+        });
+        recyclerView.setAdapter(tagAdapter);
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
+        layoutManager.setFlexWrap(FlexWrap.WRAP);
+        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
+        recyclerView.setLayoutManager(layoutManager);
+        updateTagList();
+    }
+
+
+    private void updateTagList() {
+        tags.clear();
+        Set<String> history = searchHistoryManager.getSearchHistory();
+        for (String tag : history) {
+            tags.add(new Tag(tag));
+        }
+        tagAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateTagList();
     }
 }

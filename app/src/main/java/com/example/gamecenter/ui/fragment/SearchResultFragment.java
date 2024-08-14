@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,18 +36,15 @@ public class SearchResultFragment extends Fragment {
         if (args != null) {
             userInput = args.getString("user_input");
         }
-        Log.d("kyw", "userInput: " + userInput);
         recyclerView = view.findViewById(R.id.recycler_view_search_result);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1)); // 设置每行显示三个游戏
         fetchGameData(userInput);
         return view;
     }
 
-
     private void fetchGameData(String search) {
         int current = 1;
         int size = 7;
-        Log.d("kyw", "发起请求 ");
         SearchPageApiService searchPageApiService = RetrofitClient.getClient().create(SearchPageApiService.class);
         Call<SearchGameResponse> call = searchPageApiService.searchGameCenterData(search, current, size);
         call.enqueue(new Callback<SearchGameResponse>() {
@@ -58,21 +54,20 @@ public class SearchResultFragment extends Fragment {
                     SearchGameResponse gameCenterResponse = response.body();
                     if (gameCenterResponse != null) {
                         List<SearchGameResponse.Data.Record> gameInfoList = gameCenterResponse.getData().getRecords();
-                        Log.d("kyw", "onResponse: " + gameInfoList);
                         adapter = new SearchPageAdapter(gameInfoList);
                         recyclerView.setAdapter(adapter);
                     }
                 } else {
                     // 处理请求失败的情况
-                    Log.d("kyw", "失败1 ");
                 }
             }
 
             @Override
             public void onFailure(Call<SearchGameResponse> call, Throwable t) {
                 // 处理请求失败的情况
-                Log.d("kyw", "失败2 ");
             }
         });
     }
+
+
 }
