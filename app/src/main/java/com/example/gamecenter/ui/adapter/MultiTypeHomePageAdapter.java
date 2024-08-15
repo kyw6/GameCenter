@@ -74,6 +74,11 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
             case TYPE_LAYOUT_THREE_NUM:
                 if (holder instanceof ViewHolderThreeNum) {
                     ((ViewHolderThreeNum) holder).gameName.setText(game.getGameName());
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(game.getPlayNumFormat());
+                    sb.append("人正在玩");
+                    String playNumbers = sb.toString();
+                    ((ViewHolderThreeNum) holder).playNumFormat.setText(playNumbers);
                     Glide.with(holder.itemView.getContext())
                             .load(game.getIcon())
                             .transform(new RoundedCorners(60))//圆角设置
@@ -160,11 +165,13 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
     static class ViewHolderThreeNum extends RecyclerView.ViewHolder {
         ImageView gameIcon;
         TextView gameName;
+        TextView playNumFormat;
 
         public ViewHolderThreeNum(View itemView) {
             super(itemView);
             gameIcon = itemView.findViewById(R.id.imageView_item_three_num);
             gameName = itemView.findViewById(R.id.textView_item_three_num);
+            playNumFormat = itemView.findViewById(R.id.textView_play_num_item_three_num);
         }
 
     }
