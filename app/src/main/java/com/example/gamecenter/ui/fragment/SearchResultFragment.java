@@ -1,14 +1,15 @@
 package com.example.gamecenter.ui.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.RetrofitClient;
@@ -30,21 +31,14 @@ public class SearchResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
-        // 获取 Bundle 和参数
-        String userInput = "";
-        Bundle args = getArguments();
-        if (args != null) {
-            userInput = args.getString("user_input");
-        }
         recyclerView = view.findViewById(R.id.recycler_view_search_result);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1)); // 设置每行显示三个游戏
-        fetchGameData(userInput);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1)); // 设置每行显示游戏数量
         return view;
     }
 
-    private void fetchGameData(String search) {
+    public void fetchGameData(String search) {
         int current = 1;
-        int size = 7;
+        int size = 12;
         SearchPageApiService searchPageApiService = RetrofitClient.getClient().create(SearchPageApiService.class);
         Call<SearchGameResponse> call = searchPageApiService.searchGameCenterData(search, current, size);
         call.enqueue(new Callback<SearchGameResponse>() {
@@ -54,19 +48,40 @@ public class SearchResultFragment extends Fragment {
                     SearchGameResponse gameCenterResponse = response.body();
                     if (gameCenterResponse != null) {
                         List<SearchGameResponse.Data.Record> gameInfoList = gameCenterResponse.getData().getRecords();
+                        if (gameInfoList.isEmpty()) {
+                            showNoSearchFragment() ;
+                        }
                         adapter = new SearchPageAdapter(gameInfoList);
                         recyclerView.setAdapter(adapter);
                     }
                 } else {
                     // 处理请求失败的情况
+                    showErrorFragment();
+
                 }
             }
 
             @Override
             public void onFailure(Call<SearchGameResponse> call, Throwable t) {
                 // 处理请求失败的情况
+                showErrorFragment();
             }
         });
+    }
+    private void showErrorFragment() {
+        FragmentManager fragmentManager = getParentFragmentManager(); // 获取父 FragmentManager
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_search_container, new ErrorFragment());
+        fragmentTransaction.addToBackStack(null); // 可选：将替换操作添加到返回栈
+        fragmentTransaction.commit();
+    }
+
+    private void showNoSearchFragment() {
+        FragmentManager fragmentManager = getParentFragmentManager(); // 获取父 FragmentManager
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_search_container, new NoSearchResultFragment());
+        fragmentTransaction.addToBackStack(null); // 可选：将替换操作添加到返回栈
+        fragmentTransaction.commit();
     }
 
 

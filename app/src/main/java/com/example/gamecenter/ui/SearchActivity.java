@@ -61,8 +61,6 @@ public class SearchActivity extends AppCompatActivity {
                     // 保存搜索历史
                     saveSearchHistory(query);
                 }
-
-
                 // 获取用户输入
                 String userInput = editTextSearch.getText().toString();
                 // 输出用户输入到日志
@@ -71,12 +69,7 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 // 创建新的 Fragment 实例
                 SearchResultFragment searchResultFragment = new SearchResultFragment();
-
-                // 创建 Bundle 并将数据放入其中
-                Bundle args = new Bundle();
-                args.putString("user_input", userInput);
-                // 将 Bundle 设置到 Fragment 中
-                searchResultFragment.setArguments(args);
+                searchResultFragment.fetchGameData(userInput);
                 // 替换当前 Fragment
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_search_container, searchResultFragment)
