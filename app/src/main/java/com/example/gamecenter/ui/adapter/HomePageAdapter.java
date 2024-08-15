@@ -18,6 +18,9 @@ import com.example.gamecenter.network.responses.GameCenterResponse;
 
 import java.util.List;
 
+/*
+ * 首页适配器,只显示一种类型，已经被MultipleTypeAdapter代替
+ */
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.GameViewHolder> {
 
     private List<GameCenterResponse.GameInfo> gameList;

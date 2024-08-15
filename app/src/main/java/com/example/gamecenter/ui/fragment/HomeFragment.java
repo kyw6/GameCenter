@@ -49,6 +49,8 @@ public class HomeFragment extends Fragment {
 
                 // 根据 style 返回不同的跨度
                 switch (gameInfo.getStyle()) {
+                    case 0:
+                        return 12; // 例如，style 为 0 时，一行显示12/6个
                     case 1:
                         return 4; // 例如，style 为 1 时，一行显示12/4个
                     case 2:
@@ -96,9 +98,8 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()) {
                     GameCenterResponse gameCenterResponse = response.body();
                     if (gameCenterResponse != null) {
+                        //为每个 GameInfo 对象添加 style 属性，并且一系列GameInfo的头部插入一个style为0的GameInfo，用于显示标题
                         gameInfoList = addStyleToGameInfo(gameCenterResponse);
-//                        adapter = new HomePageAdapter(gameInfoList);
-//                        recyclerView.setAdapter(adapter);
                         adapter = new MultiTypeHomePageAdapter(gameInfoList);
                         recyclerView.setAdapter(adapter);
                     }
@@ -118,11 +119,17 @@ public class HomeFragment extends Fragment {
         // 创建一个新的列表来存储所有的 GameInfo
         List<GameCenterResponse.GameInfo> allGameInfoList = new ArrayList<>();
 
+
         // 获取 records 列表
         List<GameCenterResponse.Record> records = gameCenterResponse.getData().getRecords();
 
         // 遍历所有的 Record
         for (GameCenterResponse.Record record : records) {
+            // 添加一个style为0的 GameInfo，用于显示标题
+            GameCenterResponse.GameInfo firstGameInfo = new GameCenterResponse.GameInfo();
+            firstGameInfo.setStyle(0);
+            firstGameInfo.setGameName(record.getModuleName());
+            allGameInfoList.add(firstGameInfo);
             // 获取当前 Record 的 style 和 gameInfoList
             int style = record.getStyle();
             List<GameCenterResponse.GameInfo> CurrentgameInfoList = record.getGameInfoList();
