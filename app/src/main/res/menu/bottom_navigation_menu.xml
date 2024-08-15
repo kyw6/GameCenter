@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_recommend_page"
-        android:title="首页" />
+        android:title="推荐" />
 
     <item
         android:id="@+id/nav_my_page"
