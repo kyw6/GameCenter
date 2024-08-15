@@ -1,7 +1,6 @@
 package com.example.gamecenter.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -9,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gamecenter.R;
@@ -38,6 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //这个方法有问题，Activity"1.9.1"版本会导致布局错乱，改成"1.8.0"后正常
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_search);
 
