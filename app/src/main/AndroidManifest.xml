@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GameCenter"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ProductIntroductionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SearchActivity"
             android:exported="false" />
         <activity
