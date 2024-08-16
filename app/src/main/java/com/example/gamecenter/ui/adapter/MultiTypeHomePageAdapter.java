@@ -1,5 +1,7 @@
 package com.example.gamecenter.ui.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.responses.GameCenterResponse;
+import com.example.gamecenter.ui.ProductIntroductionActivity;
 
 import java.util.List;
 
@@ -84,6 +87,11 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
                             .transform(new RoundedCorners(60))//圆角设置
                             .into(((ViewHolderThreeNum) holder).gameIcon);
 
+                    // 设置点击事件
+                    holder.itemView.setOnClickListener(v -> {
+                        Context context = v.getContext();
+                        startProductionActivity(context, game);
+                    });
                 }
                 break;
             case TYPE_LAYOUT_FOUR_NUM:
@@ -114,6 +122,12 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
                             .load(game.getIcon())
                             .transform(new RoundedCorners(42))//圆角设置
                             .into(((ViewHolderFourNum) holder).gameIcon);
+
+                    // 设置点击事件
+                    holder.itemView.setOnClickListener(v -> {
+                        Context context = v.getContext();
+                        startProductionActivity(context, game);
+                    });
                 }
                 break;
             case TYPE_LAYOUT_ONE_NUM:
@@ -142,6 +156,12 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
                             .load(game.getIcon())
                             .transform(new RoundedCorners(32))//圆角设置
                             .into(((ViewHolderOneNum) holder).gameIcon);
+
+                    // 设置点击事件
+                    holder.itemView.setOnClickListener(v -> {
+                        Context context = v.getContext();
+                        startProductionActivity(context, game);
+                    });
                 }
                 break;
         }
@@ -206,5 +226,15 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
 
         }
 
+    }
+
+    private void startProductionActivity(Context context, GameCenterResponse.GameInfo game) {
+        Intent intent = new Intent(context, ProductIntroductionActivity.class);
+        intent.putExtra("game_name", game.getGameName());
+        intent.putExtra("game_icon_url", game.getIcon());
+        intent.putExtra("game_version_name", game.getVersionName());
+        intent.putExtra("game_introduction", game.getIntroduction());
+        intent.putExtra("game_update_content", game.getIntroduction());
+        context.startActivity(intent);
     }
 }
