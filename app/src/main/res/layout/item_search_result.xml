@@ -18,9 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="Game Name"
+        android:text="@string/game_name"
         android:textColor="@color/black"
-        android:textSize="42px"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/game_icon"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="游戏描述"
-        android:textSize="28px"
+        android:text="@string/game_description"
+        android:textSize="11sp"
         app:layout_constraintBottom_toTopOf="@+id/game_label_container"
         app:layout_constraintStart_toEndOf="@+id/game_icon"
         app:layout_constraintTop_toBottomOf="@+id/game_name" />
@@ -47,13 +47,13 @@
 
     <Button
         android:id="@+id/download_button"
-        android:layout_width="140px"
-        android:layout_height="75px"
+        android:layout_width="53.3dp"
+        android:layout_height="28.57dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/rounded_button_background_search_page"
-        android:text="秒玩"
+        android:text="@string/instant_play"
         android:textColor="@color/black"
-        android:textSize="34px"
+        android:textSize="12.9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

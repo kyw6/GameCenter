@@ -22,5 +22,14 @@
     <string name="app_description">应用介绍</string>
     <string name="app_description_details">应用介绍细节</string>
     <string name="update_content">更新内容</string>
+    <string name="crazy_party">疯狂派对</string>
+    <string name="search">搜索</string>
+    <string name="network_request_failed">网络请求失败!</string>
+    <string name="no_search_results">暂无搜索结果</string>
+    <string name="recent_searches">最近搜索</string>
+    <string name="module">模块</string>
+    <string name="instant_play">秒玩</string>
+    <string name="game_description">游戏描述</string>
+    <string name="player_count">玩家人数</string>
 
 </resources>

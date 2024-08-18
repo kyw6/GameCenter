@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/image_no_search_result"
-        android:layout_width="580px"
-        android:layout_height="314px"
+        android:layout_width="221.5dp"
+        android:layout_height="119.4dp"
         android:src="@drawable/ic_no_search_result"
-        android:layout_marginBottom="600px"
+        android:layout_marginBottom="228.7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +18,13 @@
 
     <TextView
         android:id="@+id/textView_no_search_result"
-        android:layout_width="580px"
-        android:layout_height="56px"
-        android:layout_marginTop="56px"
+        android:layout_width="221.5dp"
+        android:layout_height="21.3dp"
+        android:layout_marginTop="21.3dp"
         android:gravity="center"
-        android:text="暂无搜索结果"
+        android:text="@string/no_search_results"
         android:textColor="@color/black"
-        android:textSize="42px"
+        android:textSize="15.8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_no_search_result"

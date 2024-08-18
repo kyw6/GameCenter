@@ -2,41 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="369px"
+    android:layout_height="140.2dp"
     android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/imageView_item_three_num"
-        android:layout_width="260px"
-        android:layout_height="260px"
+        android:layout_width="99.5dp"
+        android:layout_height="99.5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_item_three_num"
-        android:layout_width="260px"
-        android:layout_height="48px"
+        android:layout_width="99.5dp"
+        android:layout_height="18.2dp"
         android:gravity="center"
-        android:text="Sample Text"
+        android:text="@string/game_name"
         android:textColor="@color/black"
-        android:textSize="36px"
+        android:textSize="13.8sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_play_num_item_three_num"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView_item_three_num" />
 
     <TextView
         android:id="@+id/textView_play_num_item_three_num"
-        android:layout_width="260px"
-        android:layout_height="38px"
-
+        android:layout_width="99.5dp"
+        android:layout_height="14.2dp"
         android:gravity="center"
-        android:text="Sample Text"
+        android:text="@string/player_count"
         android:textColor="@color/gray"
-        android:textSize="28px"
+        android:textSize="10.7sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

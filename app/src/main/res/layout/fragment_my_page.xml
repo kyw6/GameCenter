@@ -8,17 +8,16 @@
     <ImageView
         android:id="@+id/background_my_page"
         android:layout_width="match_parent"
-        android:layout_height="928px"
+        android:layout_height="354.7dp"
         android:background="@drawable/background_my_page"
         app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
-
     <ImageView
         android:id="@+id/image_head_my_page"
-        android:layout_width="200px"
-        android:layout_height="200px"
+        android:layout_width="76.2dp"
+        android:layout_height="76.2dp"
         android:background="@drawable/ic_head_my_page"
         app:layout_constraintBottom_toBottomOf="@+id/background_my_page"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +33,7 @@
         android:layout_marginTop="10dp"
         android:text="点击登录"
         android:textColor="@color/black"
-        android:textSize="42px"
+        android:textSize="15.8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_head_my_page">
@@ -43,7 +42,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="1329px"
+        android:layout_height="508.6dp"
         android:background="@drawable/rounded_my_page"
         app:layout_constraintBottom_toBottomOf="parent">
 

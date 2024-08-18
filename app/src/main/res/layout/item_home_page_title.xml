@@ -20,7 +20,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_gravity="center_vertical"
-        android:text="模块"
-        android:textSize="48px" />
+        android:text="@string/module"
+        android:textSize="18.2sp" />
 
 </LinearLayout>
