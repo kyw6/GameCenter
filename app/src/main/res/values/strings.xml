@@ -9,5 +9,6 @@
     <string name="splash_agree_and_use">同意并使用</string>
     <string name="splash_user_agreement">《用户协议》</string>
     <string name="splash_privacy_agreement">《隐私协议》</string>
+    <string name="agreement_terms_and_privacy">已经阅读并同意《用户协议》和《隐私协议》</string>
 
 </resources>
