@@ -2,7 +2,6 @@ package com.example.gamecenter.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,7 +99,6 @@ public class MultiTypeHomePageAdapter extends RecyclerView.Adapter<RecyclerView.
                     // 获取 tags 并分割
                     String tags = game.getTags();
                     String tag = tags.split(",")[0].trim();  // 只获取第一个标签并去除可能的空格
-                    Log.d("kyw", "tag: " + tag);
                     // 创建并配置 TextView 标签
                     TextView tagView = new TextView(holder.itemView.getContext());
                     tagView.setText(tag);
