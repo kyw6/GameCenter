@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/image_back"
         android:layout_width="match_parent"
-        android:layout_height="601px"
+        android:layout_height="229dp"
         android:fitsSystemWindows="true"
         android:src="@drawable/ic_login_background"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="您好"
+        android:text="@string/hello"
         android:textColor="@color/black"
-        android:textSize="88px"
+        android:textSize="33.5sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_back" />
 
@@ -33,21 +33,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="请先登录"
+        android:text="@string/please_log"
         android:textColor="@color/black"
-        android:textSize="88px"
+        android:textSize="33.5sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_hello" />
 
     <EditText
         android:id="@+id/edit_text_phone"
-        android:layout_width="872px"
-        android:layout_height="120px"
+        android:layout_width="332dp"
+        android:layout_height="45.7dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_edittext_login_page_background"
         android:gravity="center_vertical"
-        android:hint="手机号码"
+        android:hint="@string/phone_number"
         android:paddingStart="20dp"
         android:textSize="16sp"
         android:inputType="number"
@@ -57,13 +57,13 @@
 
     <EditText
         android:id="@+id/edit_text_verification_code"
-        android:layout_width="872px"
-        android:layout_height="120px"
+        android:layout_width="332dp"
+        android:layout_height="45.7dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_edittext_login_page_background"
         android:gravity="center_vertical"
-        android:hint="验证码"
+        android:hint="@string/verification_code"
         android:paddingStart="20dp"
         android:textSize="16sp"
         android:inputType="number"
@@ -76,13 +76,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="270dp"
-        android:text="获取验证码"
+        android:text="@string/get_verification_code"
         android:textColor="@color/color_text_yellow_login_page"
-        android:textSize="42px"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/edit_text_verification_code"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_text_verification_code" />
-
 
     <CheckBox
         android:id="@+id/checkbox_read_and_agree"
@@ -96,11 +95,11 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="710px"
-        android:layout_height="140px"
+        android:layout_width="270.2dp"
+        android:layout_height="53.3dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button_background_login_page"
-        android:text="登录"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="@+id/edit_text_verification_code"
         app:layout_constraintStart_toStartOf="@+id/edit_text_verification_code"
         app:layout_constraintTop_toBottomOf="@+id/checkbox_read_and_agree" />
