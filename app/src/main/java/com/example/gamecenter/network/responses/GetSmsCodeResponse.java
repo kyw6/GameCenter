@@ -1,6 +1,6 @@
 package com.example.gamecenter.network.responses;
 
-public class LoginGetCodeResponse {
+public class GetSmsCodeResponse {
 
     private int code;
     private String msg;

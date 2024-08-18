@@ -17,10 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.gamecenter.R;
-import com.example.gamecenter.network.LoginGetCode;
+import com.example.gamecenter.network.GetSmsCodeService;
 import com.example.gamecenter.network.RetrofitClient;
-import com.example.gamecenter.network.models.LoginRequest;
-import com.example.gamecenter.network.responses.LoginGetCodeResponse;
+import com.example.gamecenter.network.models.GetSmsCodeRequest;
+import com.example.gamecenter.network.responses.GetSmsCodeResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 获取用户输入
                 String phoneNumber = editTextPhone.getText().toString();
                 String verificationCode = editTextVerificationCode.getText().toString();
+
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
             }
         });
@@ -129,16 +130,16 @@ public class LoginActivity extends AppCompatActivity {
 
     // 获取验证码
     private void fetchVerificationCode(String phoneNumber) {
-        LoginRequest loginRequest = new LoginRequest(phoneNumber);
-        LoginGetCode loginGetCode = RetrofitClient.getClient().create(LoginGetCode.class);
+        GetSmsCodeRequest getSmsCodeRequest = new GetSmsCodeRequest(phoneNumber);
+        GetSmsCodeService getSmsCodeService = RetrofitClient.getClient().create(GetSmsCodeService.class);
 
-        Call<LoginGetCodeResponse> call = loginGetCode.getCodeData(loginRequest);
-        call.enqueue(new Callback<LoginGetCodeResponse>() {
+        Call<GetSmsCodeResponse> call = getSmsCodeService.getCodeData(getSmsCodeRequest);
+        call.enqueue(new Callback<GetSmsCodeResponse>() {
             @Override
-            public void onResponse(Call<LoginGetCodeResponse> call, Response<LoginGetCodeResponse> response) {
+            public void onResponse(Call<GetSmsCodeResponse> call, Response<GetSmsCodeResponse> response) {
                 if (response.isSuccessful()) {
                     // 请求成功，处理响应
-                    LoginGetCodeResponse responseData = response.body();
+                    GetSmsCodeResponse responseData = response.body();
                     if (responseData != null && responseData.getCode() == 200) {
                         // 显示 Toast 消息
                         Toast.makeText(LoginActivity.this, "获取验证码成功", Toast.LENGTH_SHORT).show();
@@ -152,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginGetCodeResponse> call, Throwable t) {
+            public void onFailure(Call<GetSmsCodeResponse> call, Throwable t) {
                 // 处理网络请求失败的情况
                 Toast.makeText(LoginActivity.this, "网络请求错误", Toast.LENGTH_SHORT).show();
             }

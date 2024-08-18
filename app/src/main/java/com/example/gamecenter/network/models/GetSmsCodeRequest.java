@@ -1,10 +1,10 @@
 package com.example.gamecenter.network.models;
-
-public class LoginRequest {
+// 获取验证码请求
+public class GetSmsCodeRequest {
     private String phone;
 
     // 构造函数
-    public LoginRequest(String phone) {
+    public GetSmsCodeRequest(String phone) {
         this.phone = phone;
     }
 
