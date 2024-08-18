@@ -2,8 +2,6 @@ package com.example.gamecenter.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
-
 
 import java.util.LinkedHashSet;
 import java.util.Set;

@@ -22,9 +22,11 @@
 
 
     <!--    搜索页面-->
-    <!--    搜索按钮文字-->s
+    <!--    搜索按钮文字-->
     <color name="color_text_view_search">#FFBF41</color>
     <color name="color_search_button">#FFCD4F</color>
+    <!--    搜索历史tag-->
+    <color name="color_search_history_tag">#70000000</color>
 
     <!--    产品介绍页面-->
     <color name="product_introduction_background">#03000000</color>

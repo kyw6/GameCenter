@@ -1,24 +1,22 @@
 package com.example.gamecenter.ui.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.gamecenter.R;
-import com.example.gamecenter.ui.adapter.TagAdapter;
 import com.example.gamecenter.network.models.Tag;
+import com.example.gamecenter.ui.adapter.TagAdapter;
 import com.example.gamecenter.utils.SearchHistoryManager;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,16 +42,28 @@ public class SearchFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView_fragment_search_tab);
         searchEditText = getActivity().findViewById(R.id.edit_text_search);
         searchHistoryManager = new SearchHistoryManager(getContext());
-        tagAdapter = new TagAdapter(tags, tag -> {
-            searchEditText.setText(tag);
-            searchEditText.setSelection(tag.length());
+        tagAdapter = new TagAdapter(tags, new TagAdapter.OnTagClickListener() {
+            @Override
+            public void onTagClick(String tag) {
+                // 设置搜索框的文本
+                searchEditText.setText(tag);
+                searchEditText.setSelection(tag.length());
+                //直接切换到搜索结果页面
+                SearchResultFragment searchResultFragment = new SearchResultFragment();
+                searchResultFragment.fetchGameData(tag);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_search_container, searchResultFragment)
+                        .commit();
+            }
         });
+
         recyclerView.setAdapter(tagAdapter);
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
         layoutManager.setFlexWrap(FlexWrap.WRAP);
-        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
+        layoutManager.setJustifyContent(JustifyContent.FLEX_START);//紧密布局
         recyclerView.setLayoutManager(layoutManager);
         updateTagList();
+
     }
 
 

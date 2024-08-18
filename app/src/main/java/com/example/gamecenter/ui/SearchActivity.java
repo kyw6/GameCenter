@@ -25,6 +25,7 @@ import com.example.gamecenter.utils.SearchHistoryManager;
  *  4. 删除按钮删除全部tag
  *  5. 动态搜索
  *  6. 下拉刷新
+ *  7. 搜索结果界面，点击tag跳转到搜索结果界面
  */
 public class SearchActivity extends AppCompatActivity {
     private EditText editTextSearch;
@@ -67,10 +68,9 @@ public class SearchActivity extends AppCompatActivity {
                 if (userInput.isEmpty()) {
                     userInput = editTextSearch.getHint().toString();
                 }
-                // 创建新的 Fragment 实例
+                // 跳转到搜索结果Fragment，传递用户输入
                 SearchResultFragment searchResultFragment = new SearchResultFragment();
                 searchResultFragment.fetchGameData(userInput);
-                // 替换当前 Fragment
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_search_container, searchResultFragment)
                         .commit();
