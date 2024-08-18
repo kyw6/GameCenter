@@ -16,5 +16,11 @@
     <string name="verification_code">验证码</string>
     <string name="get_verification_code">获取验证码</string>
     <string name="login">登录</string>
+    <string name="product_description">产品介绍</string>
+    <string name="game_name">游戏名称</string>
+    <string name="game_version">游戏版本号</string>
+    <string name="app_description">应用介绍</string>
+    <string name="app_description_details">应用介绍细节</string>
+    <string name="update_content">更新内容</string>
 
 </resources>

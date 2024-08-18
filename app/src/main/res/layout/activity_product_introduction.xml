@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
@@ -21,21 +20,19 @@
             android:padding="10dp"
             android:src="@drawable/ic_return"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_view_product_introduction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="产品介绍"
+            android:text="@string/product_description"
             android:textColor="@color/black"
-            android:textSize="52px"
+            android:textSize="19.8sp"
             app:layout_constraintBottom_toBottomOf="@+id/image_back_button_product_introduction"
             app:layout_constraintStart_toEndOf="@+id/image_back_button_product_introduction"
-            app:layout_constraintTop_toTopOf="@+id/image_back_button_product_introduction">
-
-        </TextView>
+            app:layout_constraintTop_toTopOf="@+id/image_back_button_product_introduction" />
 
         <View
             android:id="@+id/dividing_line"
@@ -48,41 +45,35 @@
 
         <ImageView
             android:id="@+id/imageview_game_icon"
-            android:layout_width="170px"
-            android:layout_height="170px"
+            android:layout_width="64.8dp"
+            android:layout_height="64.8dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dividing_line">
-
-        </ImageView>
+            app:layout_constraintTop_toBottomOf="@+id/dividing_line" />
 
         <TextView
             android:id="@+id/textview_game_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="游戏名称"
+            android:text="@string/game_name"
             android:textColor="@color/black"
-            android:textSize="50px"
+            android:textSize="19.1sp"
             app:layout_constraintBottom_toTopOf="@+id/textview_game_version"
             app:layout_constraintStart_toEndOf="@+id/imageview_game_icon"
-            app:layout_constraintTop_toTopOf="@+id/imageview_game_icon">
-
-        </TextView>
+            app:layout_constraintTop_toTopOf="@+id/imageview_game_icon" />
 
         <TextView
             android:id="@+id/textview_game_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="游戏版本号"
-            android:textSize="32px"
+            android:text="@string/game_version"
+            android:textSize="12.2sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageview_game_icon"
             app:layout_constraintStart_toEndOf="@+id/imageview_game_icon"
-            app:layout_constraintTop_toBottomOf="@+id/textview_game_name">
-
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textview_game_name" />
 
         <TextView
             android:id="@+id/textview_app_introduction"
@@ -90,31 +81,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:text="应用介绍"
+            android:text="@string/app_description"
             android:textColor="@color/black"
-            android:textSize="48px"
+            android:textSize="18.3sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageview_game_icon">
-
-        </TextView>
-
+            app:layout_constraintTop_toBottomOf="@+id/imageview_game_icon" />
 
         <TextView
             android:id="@+id/textview_app_introduction_details"
-            android:layout_width="980px"
+            android:layout_width="373.3dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@color/product_introduction_background"
             android:padding="10dp"
-            android:text="应用介绍细节应用介绍细节应用介绍细节应用介绍细节应用介绍细节应用介绍细节应用介绍细节应用介绍细节应用介绍细节"
-            android:textSize="42px"
+            android:text="@string/app_description_details"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_app_introduction">
-
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textview_app_introduction" />
 
         <TextView
             android:id="@+id/textview_app_update_content"
@@ -122,31 +108,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:text="更新内容"
+            android:text="@string/update_content"
             android:textColor="@color/black"
-            android:textSize="48px"
+            android:textSize="18.3sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_app_introduction_details">
-
-        </TextView>
-
+            app:layout_constraintTop_toBottomOf="@+id/textview_app_introduction_details" />
 
         <TextView
             android:id="@+id/textview_app_update_content_details"
-            android:layout_width="980px"
+            android:layout_width="373.3dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@color/product_introduction_background"
             android:padding="10dp"
-            android:text="更新内容"
-            android:textSize="42px"
+            android:text="@string/update_content"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_app_update_content">
-
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/textview_app_update_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
