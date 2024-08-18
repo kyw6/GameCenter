@@ -1,5 +1,8 @@
 package com.example.gamecenter.ui;
 
+import static com.example.gamecenter.utils.PreferenceKeys.KEY_LOGIN_TOKEN;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,9 +21,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.GetSmsCodeService;
+import com.example.gamecenter.network.LoginService;
 import com.example.gamecenter.network.RetrofitClient;
 import com.example.gamecenter.network.models.GetSmsCodeRequest;
+import com.example.gamecenter.network.models.LoginRequest;
 import com.example.gamecenter.network.responses.GetSmsCodeResponse;
+import com.example.gamecenter.network.responses.LoginResponse;
+import com.example.gamecenter.utils.PreferencesUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     //先设置按钮不可点击，只有输入了手机号且长度为11，并且验证码输入了6位，并且阅读同意选框勾选了，按钮才能点击
     private void handleLoginButtonClick() {
         // 设置按钮初始状态为不可点击
@@ -111,8 +119,40 @@ public class LoginActivity extends AppCompatActivity {
                 // 获取用户输入
                 String phoneNumber = editTextPhone.getText().toString();
                 String verificationCode = editTextVerificationCode.getText().toString();
+                //发起登录请求
+                LoginRequest loginRequest = new LoginRequest(phoneNumber, verificationCode);
+                LoginService loginService = RetrofitClient.getClient().create(LoginService.class);
 
-                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                Call<LoginResponse> call = loginService.login(loginRequest);
+                call.enqueue(new Callback<LoginResponse>() {
+                    @Override
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        if (response.isSuccessful()) {
+                            LoginResponse loginResponse = response.body();
+                            if (loginResponse != null) {
+                                int code = loginResponse.getCode();
+                                String msg = loginResponse.getMsg();
+                                if (code == 200) {
+                                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                    // 登录成功，保存 token
+                                    String token = (String) loginResponse.getData();
+                                    saveToken(token);
+                                    // 跳转到主页面或其他操作
+                                    navigateToMainActivity();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        // 请求失败
+                        Toast.makeText(LoginActivity.this, "网络请求错误", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
     }
@@ -192,5 +232,19 @@ public class LoginActivity extends AppCompatActivity {
     // 验证手机号是否有效
     private boolean isValidPhoneNumber(String phoneNumber) {
         return phoneNumber.length() == 11 && phoneNumber.matches("\\d+");
+    }
+
+    // 保存 token 到 SharedPreferences
+    private void saveToken(String token) {
+        PreferencesUtil.init(this);
+        PreferencesUtil.setString(KEY_LOGIN_TOKEN, token);
+    }
+
+
+    // 导航到主页面
+    private void navigateToMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
