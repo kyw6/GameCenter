@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox checkBoxReadAndAgree;//阅读并同意
     private Button buttonLogin;//登录按钮
     private TextView textViewGetVerificationCode;//获取验证码
+    private CountDownTimer countDownTimer; // 定义CountDownTimer作为成员变量
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +204,7 @@ public class LoginActivity extends AppCompatActivity {
     // 开始倒计时
     private void startCountDown() {
         ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) textViewGetVerificationCode.getLayoutParams();
-        new CountDownTimer(59000, 1000) { // 59秒倒计时，每秒更新一次
+        countDownTimer = new CountDownTimer(59000, 1000) { // 59秒倒计时，每秒更新一次
             public void onTick(long millisUntilFinished) {
                 textViewGetVerificationCode.setText("获取验证码(" + millisUntilFinished / 1000 + "s)");
                 // 动态修改 layout_marginStart 值
@@ -246,5 +247,14 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 取消倒计时，以防止内存泄漏
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
     }
 }
