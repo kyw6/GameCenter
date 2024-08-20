@@ -1,5 +1,7 @@
 package com.example.gamecenter.ui.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.gamecenter.R;
 import com.example.gamecenter.network.responses.SearchGameResponse;
+import com.example.gamecenter.ui.ProductIntroductionActivity;
 
 import java.util.List;
 
@@ -64,6 +67,12 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Ga
                 .load(game.getIcon())
                 .transform(new RoundedCorners(32))//圆角设置
                 .into(holder.gameIcon);
+
+        // 设置点击事件
+        holder.itemView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            startProductionActivity(context, game);
+        });
     }
 
     @Override
@@ -84,5 +93,15 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Ga
             brief = itemView.findViewById(R.id.game_describe);
             gameLabelContainer = itemView.findViewById(R.id.game_label_container);
         }
+    }
+
+    private void startProductionActivity(Context context, SearchGameResponse.Data.Record game) {
+        Intent intent = new Intent(context, ProductIntroductionActivity.class);
+        intent.putExtra("game_name", game.getGameName());
+        intent.putExtra("game_icon_url", game.getIcon());
+        intent.putExtra("game_version_name", game.getVersionName());
+        intent.putExtra("game_introduction", game.getIntroduction());
+        intent.putExtra("game_update_content", game.getIntroduction());
+        context.startActivity(intent);
     }
 }
